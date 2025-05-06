@@ -15,6 +15,11 @@ switch($_SERVER['REQUEST_METHOD']){
         ];
 
         // var_dump($dados);
+        // var_dump(json_encode($dados));
+        
+        // __________________________________
+        // COM OS var_dump dá erro no console
+        // __________________________________
+        
         echo json_encode($dados);
-        var_dump(json_encode($dados));
 }
