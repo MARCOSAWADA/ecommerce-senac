@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <h1>Clientes Registrados</h1>
+    <ul id="listaUsuarios"></ul>
+
+    <script>
+        fetch('http://localhost/projeto/ecommerce-senac/api/cliente.php')
+            .then(res => res.json())
+            .then(usuarios => {
+                const lista = document.getElementById('listaUsuarios');
+                usuarios.forEach(usuario => {
+                    const li = document.createElement('li');
+                    li.innerText = `${usuario.nome} | ${usuario.email} | ${usuario.telefone} | ${usuario.cep} | ${usuario.cpf}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(erro => console.error('Erro ao carregar usuários:', erro));
+    </script>
+</body>
+</html>
