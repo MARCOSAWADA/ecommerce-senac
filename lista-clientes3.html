@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <div id="listaUsuarios"></div>
+
+    <script>
+        const listaUsuariosDiv = document.getElementById('listaUsuarios');
+
+        fetch('http://localhost/projeto/ecommerce-senac/api2/cliente3.php')
+            .then(response => response.json())
+            .then(usuarios => {
+                if (!usuarios.length) {
+                    listaUsuariosDiv.innerHTML = "<p>Nenhum usuário encontrado.</p>";
+                    return;
+                }
+
+                let html = '<ul>';
+                usuarios.forEach(usuario => {
+                    html += `
+                        <li>
+                            <strong>Nome:</strong> ${usuario.nome}<br>
+                            <strong>Email:</strong> ${usuario.email}<br>
+                            <strong>Telefone:</strong> ${usuario.telefone}<br>
+                            <strong>CEP:</strong> ${usuario.cep}<br>
+                            <strong>CPF:</strong> ${usuario.cpf}<br>
+                        </li><br>
+                    `;
+                });
+                html += '</ul>';
+                listaUsuariosDiv.innerHTML = html;
+            })
+            .catch(error => {
+                console.error("Erro ao buscar usuários:", error);
+                listaUsuariosDiv.innerHTML = "<p>Erro ao carregar os usuários.</p>";
+            });
+    </script>
+</body>
+</html>

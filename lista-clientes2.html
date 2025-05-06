@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Telefone</th>
+                <th>CEP</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody id="clientes"></tbody>
+    </table>
+
+    <script>
+        function carregarUsuarios() {
+            fetch('http://localhost/projeto/ecommerce-senac/api2/cliente2.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tabela = document.getElementById('clientes');
+                    tabela.innerHTML = '';
+                    
+                    data.forEach(usuario => {
+                        const linha = document.createElement('tr');
+                        linha.innerHTML = `
+                            <td>${usuario.id}</td>
+                            <td>${usuario.nome}</td>
+                            <td>${usuario.email}</td>
+                            <td>${usuario.senha}</td>
+                            <td>${usuario.telefone}</td>
+                            <td>${usuario.cep}</td>
+                            <td>${usuario.cpf}</td>
+                        `;
+                        tabela.appendChild(linha);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar usuários:', error));
+        }
+        window.onload = carregarUsuarios;
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Clientes</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>CEP</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody id="clientes"></tbody>
+    </table>
+
+    <script>
+        // Função para obter os dados da API
+        function carregarUsuarios() {
+            fetch('/api2/cliente.php', {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                let tabela = document.getElementById('clientes');
+                tabela.innerHTML = ''; // Limpar antes de preencher
+                data.forEach(usuario => {
+                    let linha = document.createElement('tr');
+                    linha.innerHTML = `
+                        <td>${usuario.id}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.email}</td>
+                        <td>${usuario.telefone}</td>
+                        <td>${usuario.cep}</td>
+                        <td>${usuario.cpf}</td>
+                    `;
+                    tabela.appendChild(linha);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os usuários:', error));
+        }
+
+        // Carregar os usuários ao carregar a página
+        window.onload = carregarUsuarios;
+    </script>
+
+</body>
+</html>

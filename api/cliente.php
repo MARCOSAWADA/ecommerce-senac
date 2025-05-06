@@ -20,6 +20,9 @@ switch($_SERVER['REQUEST_METHOD']){
         // __________________________________
         // COM OS var_dump dá erro no console
         // __________________________________
-        
+
         echo json_encode($dados);
+        break;
+
+    case 'POST':
 }
