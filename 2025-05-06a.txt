@@ -1,0 +1,23 @@
+1. criar um sistema de mini ecommerce
+
+primeiro vamos criar um banco de dados com uma tabela 
+chamada usuario. Nesta tabela devera conter nome, email 
+senha, telefone, cep e cpf.
+
+
+2. vamos continuar com o arquivo /api/cliente.php:
+ -quando entrar no switch: 
+ - caso a requisição seja um GET, vamos realizar um 
+select com todos os usuarios do banco de dados.
+
+
+3. caso a requisição seja um POST, vamos realizar uma 
+inserção na tabela usuario no banco de dados.
+
+
+4. agora crie um arquivo html chamado lista-clientes.html 
+quando o usuario entrar na pagina, deverá realizar uma 
+consulta na api no endpoint cliente.php
+
+a resposta dessa requisição deve mostrar na pagina, todos 
+os usuarios registrados no banco de dados.

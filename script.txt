@@ -1,0 +1,29 @@
+show databases;
+create database ecommerce_senac;
+use ecommerce_senac;
+
+select * from usuario;
+
+create table usuario(
+	id_usuario int not null auto_increment primary key,
+	nome varchar(100) not null,
+	email varchar(150) not null,
+    senha varchar(50) not null,
+    telefone char(11) not null,
+    cep char(8) not null,
+    cpf char(11)not null
+);
+
+drop table usuario;
+
+INSERT INTO usuario (nome, email, senha, telefone, cep, cpf) VALUES
+('Ana Souza', 'ana.souza@email.com', 'senha123', '11987654321', '01001000', '12345678901'),
+('Carlos Pereira', 'carlos.pereira@email.com', 'senha456', '11976543210', '02002000', '23456789012'),
+('João Silva', 'joao.silva@email.com', 'senha789', '11965432109', '03003000', '34567890123'),
+('Maria Oliveira', 'maria.oliveira@email.com', 'senha101', '11954321098', '04004000', '45678901234'),
+('Lucas Santos', 'lucas.santos@email.com', 'senha202', '11943210987', '05005000', '56789012345'),
+('Paula Costa', 'paula.costa@email.com', 'senha303', '11932109876', '06006000', '67890123456'),
+('Rafael Almeida', 'rafael.almeida@email.com', 'senha404', '11921098765', '07007000', '78901234567'),
+('Juliana Rocha', 'juliana.rocha@email.com', 'senha505', '11910987654', '08008000', '89012345678'),
+('Gabriel Martins', 'gabriel.martins@email.com', 'senha606', '11909876543', '09009000', '90123456789'),
+('Fernanda Lima', 'fernanda.lima@email.com', 'senha707', '11998765432', '10010000', '12398765432');
